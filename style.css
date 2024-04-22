@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --color--gris: #a5a1a1;
+  --color--fondo: #ffffff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+/* ---------------HEADER -------------------*/
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background-color: var(--color--fondo);
+  border-color: #a5a1a1;
+}
+img {
+  width: 15%;
+  height: 5%;
+  padding: 20px;
+  margin-left: 10px;
+}
+#Buscador {
+  width: 35%;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-left: 200px;
+  border: 2px solid black;
+}
+.Usuario {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left: 355px;
+  margin-top: 30px;
+}
+input {
+  padding: 2px;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.menu > ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.menu > ul > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+.menu > ul > li > a {
+  color: var(--color--gris);
+}
+.menu > ul > li:hover {
+  text-decoration: underline;
+  color: black;
+}
+.menu > ul > li > a:hover {
+  color: black;
+}
+
+/*-----------------------BODY----------------*/
+#carta_ropa {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.camiseta {
+  width: 250px;
+  height: 300px;
+  border: 2px solid black;
+}
