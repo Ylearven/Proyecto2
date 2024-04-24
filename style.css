@@ -19,6 +19,34 @@ ol {
 a {
   text-decoration: none;
 }
+h3 {
+  color: black;
+}
+p {
+  color: black;
+}
+
+.estrella {
+  width: 25px;
+  height: 25px;
+  background-color: var(--color--gris);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+.rellena {
+  background-color: yellow;
+}
+
 /* ---------------HEADER -------------------*/
 header {
   display: flex;
@@ -84,14 +112,23 @@ input {
 }
 
 /*-----------------------BODY----------------*/
-#carta_ropa {
+.flex-container {
   display: flex;
-  gap: 50px;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
-.camiseta {
+.imgContainer {
+  width: 90%;
+  height: 200px;
+}
+.imgContainer > div {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#carta > div {
+  flex-direction: column;
   width: 250px;
-  height: 300px;
-  border: 2px solid black;
 }
