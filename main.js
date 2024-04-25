@@ -4,7 +4,7 @@ const productos = [
     name: 'SHEIN WYWH Top De Cuello Halter',
     price: 5.1,
     stars: 5,
-    reviews: 500,
+    color: 'blanco',
     seller: 'SHEIN WYWH',
     image: './assets/ropa_1.jpg'
   },
@@ -12,7 +12,7 @@ const productos = [
     name: 'SHEIN MOD Top de Punto',
     price: 5,
     stars: 4,
-    reviews: 1000,
+    color: 'negro',
     seller: 'SHEIN MOD',
     image: './assets/ropa_2.jpg'
   },
@@ -20,7 +20,7 @@ const productos = [
     name: 'SHEIN Essnce Camiseta unicolor',
     price: 5.1,
     stars: 5,
-    reviews: 1000,
+    color: 'marrón',
     seller: 'SHEIN Essnce',
     image: './assets/Ropa_3.jpg'
   },
@@ -28,7 +28,7 @@ const productos = [
     name: 'SHEIN Frenchy Camiseta Casual',
     price: 5.95,
     stars: 5,
-    reviews: 1000,
+    color: 'negro',
     seller: 'SHEIN Fenchy',
     image: './assets/Ropa_4.jpg'
   },
@@ -36,7 +36,7 @@ const productos = [
     name: 'SHEIN MOD',
     price: 5,
     stars: 3,
-    reviews: 500,
+    color: 'blanco',
     seller: 'SHEIN MOD',
     image: './assets/Ropa_5.jpg'
   },
@@ -44,7 +44,7 @@ const productos = [
     name: 'SHEIN WYWH Top Boho',
     price: 3.4,
     stars: 5,
-    reviews: 500,
+    color: 'blanco',
     seller: 'SHEIN WYWH',
     image: './assets/ropa_1.jpg'
   },
@@ -52,7 +52,7 @@ const productos = [
     name: 'SHEIN LUNE Camiseta',
     price: 9,
     stars: 4,
-    reviews: 500,
+    color: 'negro',
     seller: 'SHEIN LUNE',
     image: './assets/ropa_2.jpg'
   },
@@ -60,7 +60,7 @@ const productos = [
     name: 'SHEIN LUNE Camiseta De Manga Corta',
     price: 5.95,
     stars: 2,
-    reviews: 500,
+    color: 'marrón',
     seller: 'SHEIN LUNE',
     image: './assets/Ropa_3.jpg'
   },
@@ -68,7 +68,7 @@ const productos = [
     name: 'SHEIN Essnce Top De Tirante',
     price: 5.1,
     stars: 5,
-    reviews: 500,
+    color: 'negro',
     seller: 'SHEIN Essnce',
     image: './assets/Ropa_4.jpg'
   },
@@ -76,12 +76,12 @@ const productos = [
     name: 'SHEIN Essnce Camiseta Talla Grande',
     price: 7,
     stars: 1,
-    reviews: 500,
+    color: 'blanco',
     seller: 'SHEIN Essnce',
     image: './assets/Ropa_5.jpg'
   }
 ]
-
+//-----------------------ROPA-------------------
 const printRopa = (ropa) => {
   const divRopa = document.querySelector('#carta')
   divRopa.innerHTML = '' //Esto se usa para vaciar los datos y que no se dupliquen los datos cada vez que se ejecuta
@@ -106,9 +106,10 @@ const printRopa = (ropa) => {
     }
     //Poner los contenidos
     divCamisetas.className = 'flex-container'
-    divImagen.className = 'imgContainer'
+    divImagen.classList.add('imgContainer')
+    divEstrellas.classList.add('estrellas', 'flex-container')
     imagen.src = camisetas.image
-    precio.textContent = camisetas.price
+    precio.textContent = `${camisetas.price}€`
     nombre.textContent = camisetas.name
     //Se añaden las cosas
     divCamisetas.appendChild(divImagen)
@@ -119,19 +120,49 @@ const printRopa = (ropa) => {
     divRopa.appendChild(divCamisetas)
   }
 }
+// -----------------------FILTROS--------------
+//seleccionador de vendedor
+const vendedores = []
+let vendedor = ''
+//let vendedores = ''
+
+//-----------Para limpiar -----------
+const fillVendedores = (ropa) => {
+  vendedores.splice(0)
+  for (const camisetas of ropa) {
+    if (!vendedores.includes(camisetas.seller)) {
+      vendedores.push(camisetas.seller)
+    }
+  }
+}
+fillVendedores(productos)
+
+const SelectSeller = () => {
+  const divFiltros = document.querySelector('#filtros')
+  const seleccionaSeller = document.createElement('select')
+  for (const vendedor of vendedores) {
+    const opcion = document.createElement('option')
+
+    opcion.value = vendedor
+    opcion.textContent = vendedor
+    seleccionaSeller.appendChild(opcion)
+  }
+  divFiltros.appendChild(seleccionaSeller)
+  seleccionaSeller.addEventListener('change', (event) => {
+    vendedor = event.target.value
+    filtrar()
+  })
+}
+
+const filtrar = () => {
+  const filtrado = []
+  for (const camisetas of productos) {
+    if (vendedor === camisetas.seller) {
+      filtrado.push(camisetas)
+    }
+  }
+  printRopa(filtrado)
+}
+
 printRopa(productos)
-
-/* const divRopa = document.querySelector('#cartaropa')
-products.forEach((ropa) => {
-  const divropa = document.createElement('div')
-  divropa.className = 'camisetas'
-
-  divropa.appendChild(divCamiseta)
-})
- */
-/* const seccionRopa = document.querySelector('carta_ropa')*/
-
-/*imagen.src = products.image
-nombre.src = products.name
-estrella.src = products.stars
-precio.src = products.price */
+SelectSeller()

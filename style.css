@@ -3,7 +3,33 @@
 :root {
   --color--gris: #a5a1a1;
   --color--fondo: #ffffff;
+
+  /* BORDER-COLORS */
+  --rtc-primary-border: 1px solid var(--color--gris);
+  /* BORDER radio */
+  --rtc-br: 8px;
+
+  /* Espacios */
+  --rtc-margin-xs: 10px;
+  --rtc-margin-s: 20px;
+  --rtc-margin-m: 30px;
+  --rtc-margin-l: 40px;
+  --rtc-margin-xl: 50px;
+  --rtc-margin-section: 100px;
+
+  --rtc-padding-xs: 10px;
+  --rtc-padding-s: 20px;
+  --rtc-padding-m: 30px;
+  --rtc-padding-l: 40px;
+  --rtc-padding-xl: 50px;
+
+  --rtc-gap-xs: 10px;
+  --rtc-gap-s: 20px;
+  --rtc-gap-m: 30px;
+  --rtc-gap-l: 40px;
+  --rtc-gap-xl: 50px;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -21,30 +47,12 @@ a {
 }
 h3 {
   color: black;
+  font-size: medium;
+  text-align: center;
 }
 p {
   color: black;
-}
-
-.estrella {
-  width: 25px;
-  height: 25px;
-  background-color: var(--color--gris);
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
-}
-.rellena {
-  background-color: yellow;
+  font-size: medium;
 }
 
 /* ---------------HEADER -------------------*/
@@ -56,7 +64,7 @@ header {
   background-color: var(--color--fondo);
   border-color: #a5a1a1;
 }
-img {
+.logo {
   width: 15%;
   height: 5%;
   padding: 20px;
@@ -112,23 +120,62 @@ input {
 }
 
 /*-----------------------BODY----------------*/
+
 .flex-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: var(--rtc-gap-m);
   flex-wrap: wrap;
 }
 .imgContainer {
   width: 90%;
   height: 200px;
+  padding: 5px;
+  margin-top: var(--rtc-margin-m);
+  border-radius: var(--rtc-br);
 }
-.imgContainer > div {
+.imgContainer > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+#carta {
+  margin-bottom: var(--rtc-margin-section);
+  gap: var(--rtc-gap-xl);
+}
 #carta > div {
   flex-direction: column;
   width: 250px;
+  padding-bottom: var(--rtc-padding-m);
+  border: var(--rtc-primary-border);
+  border-radius: var(--rtc-br);
+}
+.estrella {
+  width: 25px;
+  height: 25px;
+  background-color: var(--color--gris);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+.rellena {
+  background-color: yellow;
+}
+.estrellas {
+  gap: var(--rtc-gap-xs);
+}
+/*--------------FILTROS-----------*/
+#filtros {
+  height: 100px;
+  padding: var(--rtc-padding-l);
 }
