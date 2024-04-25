@@ -151,6 +151,10 @@ input {
   border: var(--rtc-primary-border);
   border-radius: var(--rtc-br);
 }
+#carta > div:hover {
+  transform: scale(1.15);
+  background-color: var(--color--fondo);
+}
 .estrella {
   width: 25px;
   height: 25px;

@@ -121,10 +121,13 @@ const printRopa = (ropa) => {
   }
 }
 // -----------------------FILTROS--------------
-//seleccionador de vendedor
+//seleccionador de vendedor y colores
 const vendedores = []
 let vendedor = ''
-//let vendedores = ''
+const colores = []
+let color = ''
+const precios = []
+let precio = ''
 
 //-----------Para limpiar -----------
 const fillVendedores = (ropa) => {
@@ -136,6 +139,26 @@ const fillVendedores = (ropa) => {
   }
 }
 fillVendedores(productos)
+
+const fillColores = (ropa) => {
+  colores.splice(0)
+  for (const camisetas of ropa) {
+    if (!colores.includes(camisetas.color)) {
+      colores.push(camisetas.color)
+    }
+  }
+}
+fillColores(productos)
+
+const fillPrecio = (ropa) => {
+  precios.splice(0)
+  for (const camisetas of ropa) {
+    if (!precios.includes(camisetas.price)) {
+      precios.push(camisetas.price)
+    }
+  }
+}
+fillPrecio(productos)
 
 const SelectSeller = () => {
   const divFiltros = document.querySelector('#filtros')
@@ -150,11 +173,41 @@ const SelectSeller = () => {
   divFiltros.appendChild(seleccionaSeller)
   seleccionaSeller.addEventListener('change', (event) => {
     vendedor = event.target.value
-    filtrar()
+    filtrarVendedor()
+  })
+}
+const SelectColor = () => {
+  const divFiltros = document.querySelector('#filtros')
+  const seleccionaColor = document.createElement('select')
+  for (const color of colores) {
+    const opcion2 = document.createElement('option')
+    opcion2.value = color
+    opcion2.textContent = color
+    seleccionaColor.appendChild(opcion2)
+  }
+  divFiltros.appendChild(seleccionaColor)
+  seleccionaColor.addEventListener('change', (event) => {
+    color = event.target.value
+    filtrarColor()
+  })
+}
+const BuscarPrecio = () => {
+  const divFiltros = document.querySelector('#filtros')
+  const BuscaPrecio = document.createElement('input')
+  for (precio of precios) {
+    const opcion3 = document.createElement('option')
+    opcion3.value = precios
+    opcion3.textContent = precios
+    BuscaPrecio.appendChild(opcion3)
+  }
+  divFiltros.appendChild(BuscaPrecio)
+  BuscaPrecio.addEventListener('change', (event) => {
+    precios = event.target.value
+    filtrarPrecio()
   })
 }
 
-const filtrar = () => {
+const filtrarVendedor = () => {
   const filtrado = []
   for (const camisetas of productos) {
     if (vendedor === camisetas.seller) {
@@ -163,6 +216,51 @@ const filtrar = () => {
   }
   printRopa(filtrado)
 }
+const filtrarColor = () => {
+  const filtradocolor = []
+  for (const camisetas of productos) {
+    if (color === camisetas.color) {
+      filtradocolor.push(camisetas)
+    }
+  }
+  printRopa(filtradocolor)
+}
+const filtrarPrecio = () => {
+  const filtradoPrecio = productos.filter((producto) => {
+    for (const camisetas of productos) {
+      if (productos.price <= camisetas.price) {
+        filtradoPrecio.push(camisetas)
+      } else {
+        return noHay()
+      }
+    }
+  })
+  printRopa(filtradoPrecio)
+}
+
+const noHay = () => {
+  console.log('Producto no encontrado')
+  let RopaAleatorio = Math.floor(Math.random() * 10) + 1
+  while (RopaAleatorio === RopaAnterior) {
+    colorAleatorio = Math.floor(Math.random() * 10) + 1
+  }
+  RopaAnterior = RopaAleatorio
+  console.log(RopaAleatorio)
+}
+const Limpiar = () => {
+  const divFiltros = document.querySelector('#filtros')
+  const boton = document.createElement('button')
+  boton.addEventListener('click', function () {
+    const elementosConFiltro = document.querySelectorAll('.filtro')
+    elementosConFiltro.forEach(function (elemento) {
+      elemento.style.filter = 'none'
+    })
+  })
+  divFiltros.appendChild(boton)
+}
 
 printRopa(productos)
 SelectSeller()
+SelectColor()
+BuscarPrecio()
+Limpiar()
