@@ -165,7 +165,6 @@ const SelectSeller = () => {
   const seleccionaSeller = document.createElement('select')
   for (const vendedor of vendedores) {
     const opcion = document.createElement('option')
-
     opcion.value = vendedor
     opcion.textContent = vendedor
     seleccionaSeller.appendChild(opcion)
@@ -195,7 +194,7 @@ const BuscarPrecio = () => {
   const divFiltros = document.querySelector('#filtros')
   const BuscaPrecio = document.createElement('input')
   for (precio of precios) {
-    const opcion3 = document.createElement('option')
+    const opcion3 = document.createElement('submit')
     opcion3.value = precios
     opcion3.textContent = precios
     BuscaPrecio.appendChild(opcion3)
@@ -225,16 +224,22 @@ const filtrarColor = () => {
   }
   printRopa(filtradocolor)
 }
-const filtrarPrecio = () => {
-  const filtradoPrecio = productos.filter((producto) => {
-    for (const camisetas of productos) {
-      if (productos.price <= camisetas.price) {
-        filtradoPrecio.push(camisetas)
-      } else {
-        return noHay()
-      }
+/* const filtrarPrecio = (PrecioMax) => {
+  const filtradoPrecio = []
+  for (const camisetas of productos) {
+    if (productos.filter(camisetas.price <= PrecioMax)) {
+      filtradoPrecio.push(camisetas)
+    } else {
+      noHay()
     }
-  })
+  }
+  printRopa(filtradoPrecio)
+} */
+const filtrarPrecio = () => {
+  const precioMax = parseFloat(document.querySelector('#precio-max').value)
+  const filtradoPrecio = productos.filter(
+    (productos) => productos.price <= precioMax
+  )
   printRopa(filtradoPrecio)
 }
 
@@ -247,19 +252,21 @@ const noHay = () => {
   RopaAnterior = RopaAleatorio
   console.log(RopaAleatorio)
 }
-const Limpiar = () => {
+/* const Limpiar = () => {
   const divFiltros = document.querySelector('#filtros')
   const boton = document.createElement('button')
+  boton.textContent = 'Limpiar Filtros'
   boton.addEventListener('click', function () {
-    const elementosConFiltro = document.querySelectorAll('.filtro')
-    elementosConFiltro.forEach(function (elemento) {
-      elemento.style.filter = 'none'
-    })
+    const elementosConFiltro = (document.querySelectorAll('.filtro').value = '')
   })
   divFiltros.appendChild(boton)
 }
+printRopa(productos) */
 
-printRopa(productos)
+const limpiar = () => {
+  document.querySelector
+}
+
 SelectSeller()
 SelectColor()
 BuscarPrecio()
