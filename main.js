@@ -190,7 +190,7 @@ const SelectColor = () => {
     filtrarColor()
   })
 }
-const BuscarPrecio = () => {
+/* const BuscarPrecio = () => {
   const divFiltros = document.querySelector('#filtros')
   const BuscaPrecio = document.createElement('input')
   for (precio of precios) {
@@ -204,7 +204,7 @@ const BuscarPrecio = () => {
     precios = event.target.value
     filtrarPrecio()
   })
-}
+} */
 
 const filtrarVendedor = () => {
   const filtrado = []
@@ -224,22 +224,15 @@ const filtrarColor = () => {
   }
   printRopa(filtradocolor)
 }
-/* const filtrarPrecio = (PrecioMax) => {
-  const filtradoPrecio = []
-  for (const camisetas of productos) {
-    if (productos.filter(camisetas.price <= PrecioMax)) {
-      filtradoPrecio.push(camisetas)
-    } else {
-      noHay()
-    }
-  }
-  printRopa(filtradoPrecio)
-} */
+
 const filtrarPrecio = () => {
   const precioMax = parseFloat(document.querySelector('#precio-max').value)
-  const filtradoPrecio = productos.filter(
-    (productos) => productos.price <= precioMax
-  )
+  const filtradoPrecio = []
+  for (const camiseta of productos) {
+    if (camiseta.price <= precioMax) {
+      filtradoPrecio.push(camiseta)
+    }
+  }
   printRopa(filtradoPrecio)
 }
 
@@ -263,9 +256,9 @@ const noHay = () => {
 }
 printRopa(productos) */
 
-const limpiar = () => {
+/* const limpiar = () => {
   document.querySelector
-}
+} */
 
 SelectSeller()
 SelectColor()
