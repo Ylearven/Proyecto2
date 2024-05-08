@@ -83,7 +83,7 @@ const productos = [
 ]
 //-----------------------ROPA-------------------
 const printRopa = (ropa) => {
-  const divRopa = document.querySelector('#carta')
+  const divRopa = document.querySelector('#productos')
   divRopa.innerHTML = '' //Esto se usa para vaciar los datos y que no se dupliquen los datos cada vez que se ejecuta
 
   for (const camisetas of ropa) {
@@ -123,11 +123,8 @@ const printRopa = (ropa) => {
 // -----------------------FILTROS--------------
 //seleccionador de vendedor y colores
 const vendedores = []
-let vendedor = ''
 const colores = []
-let color = ''
-const precios = []
-let precio = ''
+const precios = 0
 
 //-----------Para limpiar -----------
 const fillVendedores = (ropa) => {
@@ -161,8 +158,26 @@ const fillPrecio = (ropa) => {
 fillPrecio(productos)
 
 //-------Filtros---------------
-
-const filtrarVendedor = () => {
+const filtrar = () => {
+  const filtrado = []
+  for (const ropa of productos) {
+    if (
+      filtroVendedor == ropa.seller ||
+      filtroColor == ropa.color ||
+      filtroPrecio <= ropa.price
+    ) {
+      filtrado.push(ropa)
+    } else {
+      let RopaAleatoria = Math.floor(Math.random() * 10) + 1
+      console.log(
+        'No se encuentran productos, aqui le dejamos una sugerencia' +
+          RopaAleatoria
+      )
+    }
+  }
+  printRopa(filtrado)
+}
+/* const filtrarVendedor = () => {
   const filtrado = []
   for (const camisetas of productos) {
     if (vendedor === camisetas.seller) {
@@ -199,7 +214,26 @@ const filtrarPrecio = () => {
     )
   }
   printRopa(filtradoPrecio)
-}
+} */
+/* const filtros = () => {
+  const filtrado = []
+  for (const ropa of productos) {
+    if (
+      vendedor == ropa.seller ||
+      color == ropa.color ||
+      precio <= ropa.price
+    ) {
+      filtrado.push(ropa)
+    } else {
+      const RopaAleatoria = Math.floor(Math.random() * 10) + 1
+      console.log(
+        'No hay productos con ese precio, aquí tiene otros productos' +
+          RopaAleatoria
+      )
+    }
+  }
+  printRopa(filtrado)
+}*/
 
 //--------Para los buscadores------------
 
@@ -213,15 +247,14 @@ const SelectSeller = () => {
     seleccionaSeller.appendChild(opcion)
   }
   divFiltros.appendChild(seleccionaSeller)
-  seleccionaSeller.addEventListener('change', (event) => {
-    vendedor = event.target.value
-    filtrarVendedor()
+  seleccionaSeller.addEventListener('change', () => {
+    vendedores = SelectSeller.value
+    filtrar()
   })
 }
 const SelectColor = () => {
   const divFiltros = document.querySelector('#filtros')
   const seleccionaColor = document.createElement('select')
-  seleccionaColor.setAttribute('placeholder', '')
   for (const color of colores) {
     const opcion2 = document.createElement('option')
     opcion2.value = color
@@ -229,45 +262,38 @@ const SelectColor = () => {
     seleccionaColor.appendChild(opcion2)
   }
   divFiltros.appendChild(seleccionaColor)
-  seleccionaColor.addEventListener('change', (event) => {
-    color = event.target.value
-    filtrarColor()
+  seleccionaColor.addEventListener('change', () => {
+    colores = SelectColor.value
+    filtrar()
   })
 }
 const BuscarPrecio = () => {
   const divFiltros = document.querySelector('#filtros')
   const BuscaPrecio = document.createElement('input')
-  BuscaPrecio.setAtribute('type', 'number')
-  BuscaPrecio.setAttribute('placeholder', 'Precio')
-  /*  for (precio of precios) {
-    const opcion3 = document.createElement('input')
-    opcion3.value = precios
-    opcion3.textContent = precios
-    BuscaPrecio.appendChild(opcion3)
-  } */
+  BuscaPrecio.type = 'number'
+  BuscaPrecio.placeholder = 'Precio'
+  BuscarPrecio.addEventListener('input', () => {
+    precios = parseFloat(BuscaPrecio.value)
+    filtrar()
+  })
   divFiltros.appendChild(BuscaPrecio)
-  BuscaPrecio.addEventListener('input', filtrarPrecio)
 }
 
-/* const noHay = () => {
-  console.log('Producto no encontrado')
-  let RopaAleatorio = Math.floor(Math.random() * 10) + 1
-  while (RopaAleatorio === RopaAnterior) {
-    colorAleatorio = Math.floor(Math.random() * 10) + 1
-  }
-  RopaAnterior = RopaAleatorio
-  console.log(RopaAleatorio)
-} */
 const Limpiar = () => {
   const divFiltros = document.querySelector('#filtros')
-  const boton = document.createElement('button')
-  boton.textContent = 'Limpiar Filtros'
-  boton.addEventListener('click', function () {
-    const elementosConFiltro = (document.querySelectorAll('.filtro').value = '')
+  const botonLimpiar = document.createElement('button')
+  botonLimpiar.textContent = 'Limpiar '
+  boton.addEventListener('click', () => {
+    SelectSeller.value = ''
+    SelectColor.value = ''
+    BuscarPrecio.value = ''
+    colores = ''
+    vendedores = ''
+    precios = 0
+    filtrar()
   })
-  divFiltros.appendChild(boton)
+  divFiltros.appendChild(botonLimpiar)
 }
-printRopa(productos)
 
 SelectSeller()
 SelectColor()
