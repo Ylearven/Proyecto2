@@ -146,6 +146,7 @@ fillPrecio(productos)
 const SelectSeller = () => {
   const divFiltros = document.querySelector('#filtros')
   const selecionadorV = document.createElement('select')
+  selecionadorV.className = 'sellerContainer'
   const placeholderOption = document.createElement('option')
   placeholderOption.value = ''
   placeholderOption.textContent = 'Selecciona un vendedor'
@@ -167,6 +168,7 @@ const SelectSeller = () => {
 const SelectColor = () => {
   const divFiltros = document.querySelector('#filtros')
   const selecionadorC = document.createElement('select')
+  selecionadorC.className = 'colorContainer'
   const placeholderOption = document.createElement('option')
   placeholderOption.value = ''
   placeholderOption.textContent = 'Selecciona un color'
@@ -190,6 +192,7 @@ const SelectColor = () => {
 const InpurPrecio = () => {
   const divFiltros = document.querySelector('#filtros')
   const entradaP = document.createElement('input')
+  entradaP.className = 'priceContainer'
   entradaP.type = 'number'
   entradaP.placeholder = 'Introduce un precio'
   entradaP.addEventListener('input', (e) => {
@@ -203,6 +206,7 @@ const InpurPrecio = () => {
 const botonLimpiar = () => {
   const divFiltros = document.querySelector('#filtros')
   const botonLimp = document.createElement('button')
+  botonLimp.className = 'botonContainer'
   botonLimp.textContent = 'Limpiar filtros'
   botonLimp.addEventListener('click', () => {
     vendedor = ''
@@ -215,6 +219,11 @@ const botonLimpiar = () => {
     })
     const inputPrecio = divFiltros.querySelector('input[type="number"]')
     inputPrecio.value = ''
+    const mensajeNoHay = divFiltros.querySelector('p')
+    if (mensajeNoHay) {
+      mensajeNoHay.remove()
+    }
+
     filtrar()
   })
   divFiltros.appendChild(botonLimp)
