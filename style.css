@@ -140,18 +140,18 @@ input {
   height: 100%;
   object-fit: cover;
 }
-#carta {
+#productos {
   margin-bottom: var(--rtc-margin-section);
   gap: var(--rtc-gap-xl);
 }
-#carta > div {
+#productos > div {
   flex-direction: column;
   width: 250px;
   padding-bottom: var(--rtc-padding-m);
   border: var(--rtc-primary-border);
   border-radius: var(--rtc-br);
 }
-#carta > div:hover {
+#productos > div:hover {
   transform: scale(1.15);
   background-color: var(--color--fondo);
 }
