@@ -4,15 +4,15 @@ const productos = [
     name: 'SHEIN WYWH Top De Cuello Halter',
     price: 5.1,
     stars: 5,
-    color: 'blanco',
+    color: 'Blanco',
     seller: 'SHEIN WYWH',
     image: './assets/ropa_1.jpg'
   },
   {
-    name: 'SHEIN MOD Top de Punto',
+    name: 'SHEIN MOD dibujos',
     price: 4,
     stars: 4,
-    color: 'negro',
+    color: 'Negro',
     seller: 'SHEIN MOD',
     image: './assets/ropa_2.jpg'
   },
@@ -20,7 +20,7 @@ const productos = [
     name: 'SHEIN Essnce Camiseta unicolor',
     price: 6.1,
     stars: 5,
-    color: 'marrón',
+    color: 'Marrón',
     seller: 'SHEIN Essnce',
     image: './assets/Ropa_3.jpg'
   },
@@ -28,7 +28,7 @@ const productos = [
     name: 'SHEIN Frenchy Camiseta Casual',
     price: 5.95,
     stars: 5,
-    color: 'negro',
+    color: 'Negro',
     seller: 'SHEIN Fenchy',
     image: './assets/Ropa_4.jpg'
   },
@@ -36,49 +36,49 @@ const productos = [
     name: 'SHEIN MOD',
     price: 7.84,
     stars: 3,
-    color: 'blanco',
+    color: 'Blanco',
     seller: 'SHEIN MOD',
     image: './assets/Ropa_5.jpg'
   },
   {
-    name: 'SHEIN WYWH Top Boho',
+    name: 'SHEIN WYWH Top coches',
     price: 3.4,
     stars: 5,
-    color: 'blanco',
+    color: 'Rojo',
     seller: 'SHEIN WYWH',
-    image: './assets/ropa_1.jpg'
+    image: './assets/ropa_6.jpg'
   },
   {
-    name: 'SHEIN LUNE Camiseta',
+    name: 'SHEIN LUNE Camiseta flores',
     price: 9,
     stars: 4,
-    color: 'negro',
+    color: 'Rosa',
     seller: 'SHEIN LUNE',
-    image: './assets/ropa_2.jpg'
+    image: './assets/ropa_7.jpg'
   },
   {
     name: 'SHEIN LUNE Camiseta De Manga Corta',
     price: 3.95,
     stars: 2,
-    color: 'marrón',
+    color: 'Rosa',
     seller: 'SHEIN LUNE',
-    image: './assets/Ropa_3.jpg'
+    image: './assets/ropa_8.jpg'
   },
   {
-    name: 'SHEIN Essnce Top De Tirante',
+    name: 'SHEIN Essnce Equipo',
     price: 8.1,
     stars: 5,
-    color: 'negro',
+    color: 'Rojo',
     seller: 'SHEIN Essnce',
-    image: './assets/Ropa_4.jpg'
+    image: './assets/ropa_9.jpg'
   },
   {
-    name: 'SHEIN Essnce Camiseta Talla Grande',
+    name: 'SHEIN Essnce 1999',
     price: 7,
     stars: 1,
-    color: 'blanco',
+    color: 'Marrón',
     seller: 'SHEIN Essnce',
-    image: './assets/Ropa_5.jpg'
+    image: './assets/ropa_10.jpg'
   }
 ]
 
