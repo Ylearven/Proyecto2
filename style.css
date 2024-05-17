@@ -60,7 +60,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  flex-wrap: wrap;
+
   background-color: var(--color--fondo);
   border-color: #a5a1a1;
   padding-bottom: var(--rtc-padding-m);
@@ -97,13 +97,11 @@ input {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  flex-wrap: wrap;
 }
 .menu > ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
 }
 .menu > ul > li {
   display: flex;

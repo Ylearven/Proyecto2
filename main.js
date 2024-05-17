@@ -143,7 +143,7 @@ fillPrecio(productos)
 
 //-----Selectores---------
 
-const SelectSeller = () => {
+/* const SelectSeller = () => {
   const divFiltros = document.querySelector('#filtros')
   const selecionadorV = document.createElement('select')
   selecionadorV.className = 'sellerContainer'
@@ -175,6 +175,49 @@ const SelectColor = () => {
   placeholderOption.disabled = true
   placeholderOption.selected = true
   selecionadorC.appendChild(placeholderOption)
+  for (const col of colores) {
+    const opcion = document.createElement('option')
+    opcion.value = col
+    opcion.textContent = col
+    selecionadorC.appendChild(opcion)
+  }
+  divFiltros.appendChild(selecionadorC)
+  selecionadorC.addEventListener('change', (e) => {
+    color = e.target.value
+    filtrar()
+  })
+} */
+
+//------SELECTORES------
+const Select = () => {
+  const divFiltros = document.querySelector('#filtros')
+  const selecionadorV = document.createElement('select')
+  const selecionadorC = document.createElement('select')
+  selecionadorV.className = 'sellerContainer'
+  selecionadorC.className = 'colorContainer'
+  const placeholderOption = document.createElement('option')
+  placeholderOption.value = ''
+  placeholderOption.textContent = 'Selecciona un vendedor'
+  placeholderOption.disabled = true
+  placeholderOption.selected = true
+  selecionadorV.appendChild(placeholderOption)
+  const placeholderOption2 = document.createElement('option')
+  placeholderOption2.value = ''
+  placeholderOption2.textContent = 'Selecciona un color'
+  placeholderOption2.disabled = true
+  placeholderOption2.selected = true
+  selecionadorC.appendChild(placeholderOption2)
+  for (const sel of vendedores) {
+    const opcion = document.createElement('option')
+    opcion.value = sel
+    opcion.textContent = sel
+    selecionadorV.appendChild(opcion)
+  }
+  divFiltros.appendChild(selecionadorV)
+  selecionadorV.addEventListener('change', (e) => {
+    vendedor = e.target.value
+    filtrar()
+  })
   for (const col of colores) {
     const opcion = document.createElement('option')
     opcion.value = col
@@ -270,7 +313,6 @@ const printRopa = (ropa) => {
 }
 
 printRopa(productos)
-SelectSeller()
-SelectColor()
+Select()
 InpurPrecio()
 botonLimpiar()
